@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100vh;
+   
+}
+body{
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0 12px;
+    background-color: #fcaeae;
+    background-repeat: no-repeat;
+}
+
+.formular,input{
+    display: grid;
+    place-items: center;
+    font-size: medium;
+    border-radius: 2px;
+}
+.hlavicka{
+    font-size: large;
+    font-family:'Courier New', Courier, monospace;
+    border: 2px white solid;
+    border-radius: 15px;
+    padding: 25px 25px;
+    background: linear-gradient(to right, #f98aa7, #fcaeae, #fde2c5);
+    color:ghostwhite;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    text-decoration: underline;
+}
+a{
+    color: black;
+    font-weight: normal;
+}
+button{
+    margin-top: 25px;
+    font-size: large;
+}
+input:hover{
+    border-color: #f98aa7;
+}
+a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+}
