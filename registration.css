@@ -20,9 +20,10 @@ body{
     place-items: center;
     font-size: medium;
     border-radius: 2px;
+    font-size: 18px;
 }
 .hlavicka{
-    font-size: large;
+    font-size: 18px;
     font-family:'Courier New', Courier, monospace;
     border: 2px white solid;
     border-radius: 15px;

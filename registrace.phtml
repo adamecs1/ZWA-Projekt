@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrace</title>
+    <link rel="stylesheet" href="registration.css?v=1.0">
+</head>
+<body>
+    <form class="formular"method="POST">
+        <div class="hlavicka">
+            <label for="username">Uživatelské jméno</label>
+            <input type="text" name="username" required>
+
+            <label for="password">Heslo</label>
+            <input type="password" name="password" required>
+
+            <label for="password-again">Zopakujte heslo</label>
+            <input type="password" name="password-again"required>
+
+            <label for="tel">Telefonní číslo</label>
+            <input type="tel" name="tel"required placeholder="123 456 789">
+
+            <label for="adresa">Adresa</label>
+            <input type="text" name="adresa"required placeholder="Čáslavska 172">
+
+            <label for="psc">PSČ</label>
+            <input type="text" name="psc" placeholder="123 45"requird>
+        </div>
+
+        <div>
+            <button name="registerForm">Registrovat se</button>
+        </div>
+
+    </form>
+</body>
+</html>

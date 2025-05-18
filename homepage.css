@@ -1,8 +1,10 @@
 .navbar{
-    background-color:  #f28888;
+    background-color:  #f4adad;
     font-family: 'Courier New', Courier, monospace;
     padding-right: 25px;
     padding-left: 25px;
+    border: 1px solid #fff;
+    border-radius: 25px;
 }
 .navdiv{
     display: flex;
@@ -41,6 +43,8 @@ a:hover{
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    background-color:  #f28888;
+    background-color:  #f4adad;
     color:white;
+     border: 1px solid #fff;
+    border-radius: 7px;
 }
