@@ -7,7 +7,7 @@ require "./db/users.php";
 
 if(isset($_POST["loginButton"])){
     loginUser($db,$_POST["username"],$_POST["password"]);
-    require "index.php";
+    require "orders.php";
 }
 else{
 require "./layout/head.phtml";

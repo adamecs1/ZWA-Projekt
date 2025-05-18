@@ -47,11 +47,6 @@ function loginUser($db,$username,$passwd){
 
     $_SESSION["user"] = $user;
 
-    if($user["is_admin"]===1){
-        echo "vitejte zakazniku";
-    }
-    elseif($user["is_admin"]===2){
-        echo "vitejte spravce";
-    }
+   
 }
 ?>
