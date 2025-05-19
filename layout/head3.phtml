@@ -11,15 +11,8 @@
                 <div class="navdiv">
                         <div><a href="index.php"><img src="images/uvodni-logo.png"></a></div>
                     <ul>
-                        <li><?php 
-                            
-                            if($user["is_admin"]===1){
-                            echo "Jste prihlasen jako ". $user["uzivatelske_jmeno"];
-                            }elseif($user["is_admin"]===2)
-                            echo "<p style='color:red;'> Jste prihlasen jako " . $user["uzivatelske_jmeno"]; "</p>" 
-                                
-                                    ?></li>
-                        <li><a href="logout.php">ODHLÁŠENÍ</a></li>
+                        <li>ŠPATNÉ PŘIHLAŠOVACÍ ÚDAJE</li>
+                        <li><a href="login.php">PŘIHLÁŠENÍ</a></li>
                         <li><a href="products.phtml">PROHLÍŽENÍ PRODUKTŮ</a></li>
                     </ul>
                 </div>
