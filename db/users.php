@@ -40,13 +40,10 @@ function loginUser($db,$username,$passwd){
         exit;
     }
     $user = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
-    if ($user === null || password_verify($passwd, $user["heslo"])) {
-        echo "<p>Neplatné přihlašovací údaje.</p>";
+    if ($user === null || !password_verify($passwd, $user["heslo"])) {
         return;
     }
 
     $_SESSION["user"] = $user;
-
    
 }
-?>

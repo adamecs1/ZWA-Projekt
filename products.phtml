@@ -4,8 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="login.css?v=1.0">
 </head>
 <body>
-    Produkty 
+    <div class="hlavicka">
+        <h1>Přidání produktu</h1>
+        <form class="formular" method="POST">
+            <label for="nazev">Název produktu</label>
+            <input type="text" placeholder="rohlik" name="nazev">
+
+             <label for="cena">Cena (kč)</label>
+             <input type="number" placeholder="150 (kc)" min="1" max="1000" name="cena">
+
+             <label for="hmotnost">Hmotnost</label>
+             <input type="text" placeholder="500g" name="hmotnost">
+
+             <label for="arrival">Doba doručení</label>
+             <input type="number" placeholder="5 (dní)" min="1", max="30"name="arrival">
+            
+             <button name="addProduct">Přidat produkt</button>
+        </form>
+    </div>
 </body>
 </html>
