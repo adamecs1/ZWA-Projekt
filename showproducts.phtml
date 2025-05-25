@@ -1,1 +1,53 @@
-Byl pridan produkt
+<h1>Seznam produktů</h1>
+
+<table>
+    <tr>
+        <th>Kod produktu</th>
+        <th>Název</th>
+        <th>Cena</th>
+        <th>Hmotnost</th>
+        <th>Doba doručení</th>
+        <th>Akce</th>
+    </tr>
+    <?php 
+        $user = $_SESSION["user"] ?? null;
+        foreach ($products as $product) {
+    ?>
+            <tr>
+                <td><?= $product["kod_produktu"] ?></td>
+                <td><?= $product["nazev_produktu"] ?></td>
+                <td><?= $product["cena"] ?> Kč</td>
+                <td><?= $product["hmotnost"]?>g</td>
+                <td><?= $product["doba_doruceni"]?> dní</td>
+                <td>
+                    <?php
+                    if($user["is_admin"]===2){
+                    ?>
+                    <form method="GET">
+                        <input 
+                            type="hidden"
+                            name="id"
+                            value="<?= $product["kod_produktu"] ?>"
+                        >
+                        <button>Upravit produkt</button>
+                    </form>
+                    <form method="POST">
+                        <input 
+                            type="hidden"
+                            name="id"
+                            value="<?= $product["kod_produktu"] ?>"
+                        >
+                        <button name="deleteProduct">Odstranit produkt</button>
+                    </form>
+                    <?php
+                    }
+                    elseif($user["is_admin"]===1){
+                        echo "<button>Objednat</button>";
+                    }
+                    ?>
+                </td>
+            </tr>
+    <?php
+        }
+    ?>
+</table>

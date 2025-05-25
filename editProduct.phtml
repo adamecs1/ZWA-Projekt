@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css?v=1.0">
+</head>
+<body>
+    <div class="hlavicka">
+        <h1>Editace produktu</h1>
+        <form class="formular" method="POST">
+            <label for="nazev">Název produktu</label>
+            <input type="text"name="nazev" required value="<?= $product["nazev_produktu"]?>">
+
+             <label for="cena">Cena (kč)</label>
+                <input type="number" style="width:150px" min="1" max="1000" name="cena" required value="<?= $product["cena"]?>">
+
+             <label for="hmotnost">Hmotnost</label>
+             <input type="text"name="hmotnost" style="width:50px" required value="<?= $product["hmotnost"]?>">
+
+             <label for="arrival">Doba doručení</label>
+             <input type="number" style="width:150px"min="1", max="30"name="arrival"required value="<?= $product["doba_doruceni"]?>" >
+            
+             <button name="editProductForm">Upravit produkt</button>
+        </form>
+    </div>
+</body>
+</html>
