@@ -22,7 +22,7 @@ USE `mydb` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`users` (
   `uzivatelske_jmeno` VARCHAR(50) NOT NULL,
-  `heslo` VARCHAR(40) NOT NULL,
+  `heslo` VARCHAR(100) NOT NULL,
   `tel_cislo` INT NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `adresa` VARCHAR(50) NOT NULL,
