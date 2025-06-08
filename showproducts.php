@@ -2,6 +2,7 @@
 
 require "./utils/init.php";
 require "./db/produkty.php";
+require "./db/objednavky.php";
 
 require "./db/users.php";
 
@@ -13,6 +14,11 @@ if($user===NULL){
     require "./layout/head3.phtml";
 }
 elseif($user!==NULL){
+     if(isset($_POST["submitOrder"])){
+            pridatObjednavku($db,$_POST["nazevObj"],$_POST["state"],$_POST["id"]);
+            require "orders.php";
+        }
+        else{
     require "./layout/head2.phtml";
 
 
@@ -29,6 +35,7 @@ if (isset($_GET["id"])) {
     $products = listProducts($db);
     require "./showproducts.phtml";
 }
-
-}
 require "./layout/tail.phtml";
+    }
+}
+

@@ -1,24 +1,123 @@
-<h1>Seznam produktů</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color:rgb(255, 255, 255);
+    color: #333;
+}
+
+
+h1 {
+    text-align: center;
+    color: #e7afaf;
+    margin-bottom: 30px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse; 
+    margin: 0 auto; 
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+
+th {
+    background-color: #f4adad; 
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+}
+
+
+tr {
+    border-bottom: 1px solid #dddddd; 
+}
+tr:hover {
+    background-color: #e0f2f7; 
+    cursor: pointer;
+}
+
+
+td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    font-size: 0.95em;
+}
+
+td form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+button {
+    background-color: #f4adad; 
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #27ae60; 
+}
+
+button[name="deleteProduct"] {
+    background-color:rgb(226, 139, 129); 
+}
+
+button[name="deleteProduct"]:hover {
+    background-color:rgb(239, 127, 115);
+}
+
+button:not([name="submitOrder"]):not([name="deleteProduct"]) {
+    background-color:rgb(235, 194, 127); 
+}
+
+button:not([name="submitOrder"]):not([name="deleteProduct"]):hover {
+    background-color:rgb(215, 155, 101);
+}
+</style>
+</head>
+<body>
+   <h1>Seznam produktů</h1>
 
 <table>
-    <tr>
-        <th>Kod produktu</th>
-        <th>Název</th>
-        <th>Cena</th>
-        <th>Hmotnost</th>
-        <th>Doba doručení</th>
-        <th>Akce</th>
-    </tr>
+             <tr>
+            <th>Kod produktu</th>
+            <th>Název</th>
+            <th>Cena</th>
+            <th>Hmotnost</th>
+            <th>Doba doručení</th>
+            <th>Akce</th>
+            </tr>
+   
     <?php 
         $user = $_SESSION["user"] ?? null;
         foreach ($products as $product) {
     ?>
             <tr>
-                <td><?= $product["kod_produktu"] ?></td>
-                <td><?= $product["nazev_produktu"] ?></td>
-                <td><?= $product["cena"] ?> Kč</td>
-                <td><?= $product["hmotnost"]?>g</td>
-                <td><?= $product["doba_doruceni"]?> dní</td>
+                    <td><?= $product["kod_produktu"] ?></td>
+                    <td><?= $product["nazev_produktu"] ?></td>
+                    <td><?= $product["cena"] ?> Kč</td>
+                    <td><?= $product["hmotnost"]?>g</td>
+                    <td><?= $product["doba_doruceni"]?> dní</td>
+   
                 <td>
                     <?php
                     if($user["is_admin"]===2){
@@ -42,12 +141,36 @@
                     <?php
                     }
                     elseif($user["is_admin"]===1){
-                        echo "<button>Objednat</button>";
+                    ?>
+                        <form method='POST'>
+                        <input 
+                        type = "hidden"
+                        name = "nazevObj"
+                        value = "<?= $product["nazev_produktu"]?>"
+                        >
+
+                        <input 
+                        type = "hidden"
+                        name = "state"
+                        value = "Pripravuje"
+                        >
+
+                        <input
+                        type = "hidden"
+                        name = "id"
+                        value = "<?= $product["kod_produktu"]?>"
+                        >
+                        <button name="submitOrder">Objednat</button>
+                        </form>
+                    <?php
                     }
                     ?>
                 </td>
             </tr>
+   
     <?php
         }
     ?>
-</table>
+</table> 
+</body>
+</html>

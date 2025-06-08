@@ -8,6 +8,7 @@ $user = $_SESSION["user"] ?? null; // Pokud není přihlášen, bude null
         require "./homepage.phtml";
         require "./layout/tail.phtml";
     }
+    
     require "./layout/head2.phtml";
     require "./orders.phtml";
     require "./layout/tail.phtml";
