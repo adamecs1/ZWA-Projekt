@@ -3,7 +3,7 @@
 
 session_start();
 
-$db = mysqli_connect("localhost","root","","project-zwa");
+$db = mysqli_connect("localhost","root","","projectzwa");
 if($db=== false){
     echo "<h1>Připojení k databázi selhalo</h1>";
     exit;
