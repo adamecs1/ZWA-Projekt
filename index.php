@@ -7,12 +7,10 @@ $user = $_SESSION["user"] ?? null;
 if($user===NULL){
     require "./layout/head.phtml";
     require "./homepage.phtml";
+    require "./layout/tail.phtml";
     
 }
 elseif($user!==NULL){
-  require "./layout/head2.phtml";
-  require "./orders.phtml";
+  require "./orders.php";
 }
 
-
-require "./layout/tail.phtml";

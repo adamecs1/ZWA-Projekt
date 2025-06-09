@@ -1,19 +1,133 @@
-<div>
-    Objednavka 1
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+}
 
-<div>
-    Objednavka 1
-</div>
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
 
-<div>
-    Objednavka 1
-</div>
+th {
+    background-color: #f4adad;
+    font-weight: bold;
+}
 
-<div>
-    Objednavka 1
-</div>
 
-<div>
-    Objednavka 1
-</div>
+button, a.button {
+    padding: 6px 12px;
+    background-color: #e7afaf;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:hover, a.button:hover {
+    background-color:rgb(186, 112, 112);
+}
+</style>
+<body>
+   <h1>Seznam objednávek</h1>
+
+<table>
+             <tr>
+            <th>Kod Objednávky</th>
+            <th>Název objednávky</th>
+            <th>Stav objednávky</th>
+            <th>Čas vytvoření</th>
+            <th>Produkt (Kod)</th>
+            <?php
+            if($user["is_admin"]===2){
+            ?>
+            <th>Akce</th>
+            <?php
+            }
+            elseif($user["is_admin"]===1){
+            ?>
+            <th>Recenze</th>
+            <?php
+            }
+            ?>
+            </tr>
+   
+    <?php 
+        $user = $_SESSION["user"] ?? null;
+        foreach ($orders as $order) {
+             $kod = $order["kod_objednavky"];
+    
+            $stmt = mysqli_prepare($db, "SELECT * FROM recenze WHERE objednavky_kod_objednavky = ?");
+            mysqli_stmt_bind_param($stmt, "i", $kod);
+            mysqli_stmt_execute($stmt);
+            $recenze = mysqli_stmt_get_result($stmt);
+            $recenzeData = mysqli_fetch_assoc($recenze);
+    ?>
+            <tr>
+                    <td><?= $order["kod_objednavky"] ?></td>
+                    <td><?= $order["nazev_objednavky"] ?></td>
+                    <td><?= $order["stav_objednavky"] ?></td>
+                    <td><?= $order["cas_vytvoreni"]?></td>
+                    <td><?= $order["produkty_kod_produktu"]?></td>
+                    <td>
+                    <?php if ($recenzeData): ?>
+                <b>Hvězd: <?= $recenzeData["pocet_hvezd"]?>*</b><br>
+                    <br>Popis: <?=$recenzeData["popis"]?><br>
+                    Koupí znovu: <?= $recenzeData["koupim_priste"] ?>
+                        <?php else: ?>
+                            -
+                        <?php endif; ?>
+                    </td>
+   
+                <td>
+                    <?php
+                    if($user["is_admin"]===2){
+                    ?>
+                    <form method="GET">
+                        <input 
+                            type="hidden"
+                            name="idObjednavky"
+                            value="<?= $order["kod_objednavky"] ?>"
+                        >
+                        <button>Upravit objednavku</button>
+                    </form>
+                    <form method="POST">
+                        <input 
+                            type="hidden"
+                            name="idObjednavky"
+                            value="<?= $order["kod_objednavky"] ?>"
+                        >
+                        <button name="deleteOrder">Odstranit objednavku</button>
+                    </form>
+                  <?php
+                    }
+    elseif ($user["is_admin"] === 1 && $order["stav_objednavky"] === "Doruceno") {
+    ?>
+        <form method="GET" action="reviews.php">
+            <input type="hidden" name="idRecenze" value="<?= $order["kod_objednavky"] ?>">
+            <button type="submit">Napište recenzi</button>
+         </form>
+            <?php
+        }
+            ?>
+                </td>
+            </tr>
+   
+    <?php
+        }
+    ?>
+</table> 
+</body>
+</html>
+

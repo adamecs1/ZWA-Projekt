@@ -2,7 +2,7 @@
 
 require "./utils/init.php";
 require "./db/produkty.php";
-require "./db/objednavky.php";
+require "./db/addOrder.php";
 
 require "./db/users.php";
 
@@ -16,7 +16,7 @@ if($user===NULL){
 elseif($user!==NULL){
      if(isset($_POST["submitOrder"])){
             pridatObjednavku($db,$_POST["nazevObj"],$_POST["state"],$_POST["id"]);
-            require "orders.php";
+            require "./orders.php";
         }
         else{
     require "./layout/head2.phtml";

@@ -19,8 +19,18 @@
                             echo "<p style='color:red;'> Jste prihlasen jako " . $user["uzivatelske_jmeno"]; "</p>" 
                                 
                                     ?></li>
+                        
+                        <li><?php
+                        if($user["is_admin"]===1){
+                            echo "<a href='showproducts.php'>PROHLÍŽENÍ PRODUKTŮ</a></li>";
+                        }elseif($user["is_admin"]===2){
+                            echo "<li><a href='showproducts.php'>EDITACE PRODUKTŮ</a></li>";
+                            echo "        ";
+                            echo "<li><a href='products.php'>PŘIDÁNÍ PRODUKTŮ</a></li>";
+                        }
+                        
+                        ?>
                         <li><a href="logout.php">ODHLÁŠENÍ</a></li>
-                        <li><a href="products.phtml">PROHLÍŽENÍ PRODUKTŮ</a></li>
                     </ul>
                 </div>
             </nav>

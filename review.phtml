@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recenze</title>
+    <link rel="stylesheet" href="login.css?v=1.0">
+</head>
+<body>
+    <div class="hlavicka">
+        <h1>Napište recenzi</h1>
+
+        <form class="formular" method="POST">
+            <label for="popis">Popis (max. 100 znaků)</label>
+            <textarea name="popis" id="popis" maxlength="100" required rows="3"></textarea>
+
+            <label for="pocetStar">Počet hvězd (1-5)</label>
+            <input type="number" name="pocetStar" id="pocetStar" required min="1" max="5">
+
+            <label for="koupitPriste">Koupíte znovu? (ano / ne)</label>
+            <input type="text" name="koupitPriste" id="koupitPriste" maxlength="3" required pattern="ano|ne" title="Zadejte 'ano' nebo 'ne'">
+
+            <button type="submit" name="postReview">Odeslat recenzi</button>
+        </form>
+    </div>
+</body>
+</html>

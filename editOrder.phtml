@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css?v=1.0">
+</head>
+<body>
+    <div class="hlavicka">
+        <h1>Editace objednávky</h1>
+        <form class="formular" method="POST">
+            <label for="state">Stav objednávky</label>
+            <input type="text" name="state" value= "<?=$order["stav_objednavky"] ?>">
+            
+             <button name="editOrderForm">Upravit objednávku</button>
+        </form>
+    </div>
+</body>
+</html>
